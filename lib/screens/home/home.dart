@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:my_telenor/constants/colors.dart';
 import 'package:my_telenor/screens/home/bloc/homeview_bloc.dart';
-import 'package:my_telenor/screens/home/courasol_data.dart';
+import 'package:my_telenor/screens/home/data/courasol_data.dart';
+import 'package:my_telenor/screens/home/start/start.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
@@ -183,33 +185,49 @@ class _MyHomePageState extends State<MyHomePage> {
                   );
                 },
               ),
-              Container(
-                margin: EdgeInsets.only(top: mq.height * .02),
-                width: mq.width * .85,
-                height: mq.height * .055,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(12),
-                  color: colors['primary'],
-                ),
-                child: const Center(
-                  child: Text(
-                    'S T A R T',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 20,
-                      fontWeight: FontWeight.w500,
+              GestureDetector(
+                onTap: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => const Start(),
+                    ),
+                  );
+                },
+                child: Container(
+                  margin: EdgeInsets.only(top: mq.height * .02),
+                  width: mq.width * .85,
+                  height: mq.height * .055,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(12),
+                    color: colors['primary'],
+                  ),
+                  child: const Center(
+                    child: Text(
+                      'S T A R T',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                        fontWeight: FontWeight.w500,
+                      ),
                     ),
                   ),
                 ),
               ),
               Padding(
                 padding: EdgeInsets.only(top: mq.height * .03),
-                child: Text(
-                  'Sign in with Another Number',
-                  style: TextStyle(
-                    color: colors['primary'],
-                    fontSize: 18,
-                    fontWeight: FontWeight.w500,
+                child: GestureDetector(
+                  onTap: () => Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => const Start(),
+                    ),
+                  ),
+                  child: Text(
+                    'Sign in with Another Number',
+                    style: TextStyle(
+                      color: colors['primary'],
+                      fontSize: 18,
+                      fontWeight: FontWeight.w500,
+                    ),
                   ),
                 ),
               ),
