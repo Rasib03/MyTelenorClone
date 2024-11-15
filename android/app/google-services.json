@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1004646771031",
+    "project_id": "mytelenor-73430",
+    "storage_bucket": "mytelenor-73430.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1004646771031:android:12cf2d8193d3b2def27612",
+        "android_client_info": {
+          "package_name": "com.example.my_telenor"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD7Ee1z8F0Rn-VI1tHX5EsNSrJPpsrBBGU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

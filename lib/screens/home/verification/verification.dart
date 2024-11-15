@@ -1,31 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
 import 'package:my_telenor/constants/colors.dart';
-import 'package:my_telenor/screens/home/verification/verification.dart';
 
-class Start extends StatefulWidget {
-  const Start({super.key});
+class Verification extends StatefulWidget {
+  final int number;
+  const Verification({
+    super.key,
+    required this.number,
+  });
 
   @override
-  State<Start> createState() => _StartState();
+  State<Verification> createState() => _VerificationState();
 }
 
-class _StartState extends State<Start> {
-  late final TextEditingController _controller;
+class _VerificationState extends State<Verification> {
   bool _isComplete = false;
-  @override
-  void initState() {
-    super.initState();
-    _controller = TextEditingController();
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
-
   @override
   Widget build(BuildContext context) {
     final mq = MediaQuery.of(context).size;
@@ -68,7 +57,7 @@ class _StartState extends State<Start> {
                 Padding(
                   padding: EdgeInsets.only(top: mq.height * .04),
                   child: const Text(
-                    'Sign in with your mobile number',
+                    'We sent verification to',
                     style: TextStyle(
                       fontSize: 13,
                       color: Colors.black,
@@ -77,10 +66,49 @@ class _StartState extends State<Start> {
                   ),
                 ),
                 Padding(
+                  padding: EdgeInsets.only(top: mq.height * .01),
+                  child: Text(
+                    widget.number.toString(),
+                    style: const TextStyle(
+                      fontSize: 13,
+                      color: Colors.black,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ),
+                Padding(
                   padding: EdgeInsets.only(
-                      right: mq.width * .67, top: mq.height * .02),
+                      top: mq.height * .02, left: mq.height * .17),
+                  child: Row(
+                    children: [
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.of(context).pop();
+                        },
+                        child: Text(
+                          'Change number',
+                          style: TextStyle(
+                            color: colors['primary'],
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        width: mq.width * .01,
+                      ),
+                      Icon(
+                        Icons.arrow_forward_ios,
+                        size: 14,
+                        color: colors['primary'],
+                      ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(
+                      right: mq.width * .73, top: mq.height * .02),
                   child: const Text(
-                    'Mobile Number',
+                    'Enter OTP',
                     style: TextStyle(
                       fontSize: 13,
                       color: Colors.black,
@@ -107,11 +135,10 @@ class _StartState extends State<Start> {
                           width: MediaQuery.of(context).size.width * .7,
                           height: MediaQuery.of(context).size.height * .05,
                           child: TextFormField(
-                            controller: _controller,
                             keyboardType: TextInputType.number,
                             autofocus: true,
                             decoration: InputDecoration(
-                              hintText: '03XXXXXXXXX',
+                              hintText: 'O T P',
                               focusedBorder: UnderlineInputBorder(
                                 borderSide: _isComplete
                                     ? BorderSide.none
@@ -149,37 +176,53 @@ class _StartState extends State<Start> {
                     ),
                   ),
                 ),
-                GestureDetector(
-                  onTap: () {
-                    _controller.text.length == 11
-                        ? Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (context) => Verification(
-                                number: int.parse(_controller.text),
-                              ),
-                            ),
-                          )
-                        : null;
-                  },
-                  child: Container(
-                    margin: EdgeInsets.only(
-                      top: mq.height * .05,
-                      right: mq.width * .02,
-                    ),
-                    width: mq.width * .88,
-                    height: mq.height * .05,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(7),
-                      color: colors['primary'],
-                    ),
-                    child: const Center(
-                      child: Text(
-                        'Sign In',
+                Padding(
+                  padding: EdgeInsets.only(
+                      left: mq.width * .5, top: mq.height * .008),
+                  child: Row(
+                    children: [
+                      Text(
+                        "Didn't get a code? ",
                         style: TextStyle(
-                          fontSize: 16,
-                          color: Colors.white,
-                          fontWeight: FontWeight.w500,
+                          fontSize: 13,
+                          color: Colors.grey.shade900,
+                          fontWeight: FontWeight.w400,
                         ),
+                      ),
+                      Text(
+                        " Resend  ",
+                        style: TextStyle(
+                          fontSize: 13,
+                          color: Colors.grey.shade700,
+                          fontWeight: FontWeight.w300,
+                        ),
+                      ),
+                      Icon(
+                        Icons.arrow_forward_ios,
+                        size: 14,
+                        color: Colors.grey.shade700,
+                      ),
+                    ],
+                  ),
+                ),
+                Container(
+                  margin: EdgeInsets.only(
+                    top: mq.height * .05,
+                    right: mq.width * .02,
+                  ),
+                  width: mq.width * .88,
+                  height: mq.height * .05,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(7),
+                    color: colors['primary'],
+                  ),
+                  child: const Center(
+                    child: Text(
+                      'Verify Code',
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: Colors.white,
+                        fontWeight: FontWeight.w500,
                       ),
                     ),
                   ),
@@ -210,7 +253,7 @@ class _StartState extends State<Start> {
                   ),
                 ),
                 Container(
-                  margin: EdgeInsets.only(top: mq.height * .5),
+                  margin: EdgeInsets.only(top: mq.height * .37),
                   width: mq.width,
                   height: mq.height * .06,
                   color: Colors.grey.shade200,
