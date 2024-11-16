@@ -1,4 +1,3 @@
-
 // ignore_for_file: prefer_function_declarations_over_variables, avoid_print
 
 import 'package:firebase_auth/firebase_auth.dart';
@@ -27,6 +26,7 @@ Future<void> sendOTP(
   };
 
   await _auth.verifyPhoneNumber(
+    timeout: const Duration(minutes: 2),
     phoneNumber: phoneNumber, // Make sure to format it with the country code
     verificationCompleted: verificationCompleted,
     verificationFailed: verificationFailed,
@@ -60,15 +60,4 @@ Future<void> verifyOTP(String verificationId, String smsCode) async {
 // EXAMPLE
 String verificationId = ''; // Store the verificationId globally or in the state
 
-// void onCodeSent(String verificationIdFromFirebase) {
-//   setState(() {
-//     verificationId = verificationIdFromFirebase;
-//   });
-// }
-
-// // Call sendOTP when the user enters their phone number
-// sendOTP('+11234567890', onCodeSent);
-
-// // After OTP is sent, the user will enter the OTP. Then you can call verifyOTP.
-// verifyOTP(verificationId, '123456'); // '123456' is the OTP entered by the user
 

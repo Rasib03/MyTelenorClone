@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:my_telenor/constants/colors.dart';
-import 'package:my_telenor/screens/home/bloc/homeview_bloc.dart';
-import 'package:my_telenor/screens/home/data/courasol_data.dart';
+import 'package:my_telenor/blocs/home_bloc/homeview_bloc.dart';
+import 'package:my_telenor/data/courasol_data.dart';
 import 'package:my_telenor/screens/home/start/start.dart';
 
 class MyHomePage extends StatefulWidget {

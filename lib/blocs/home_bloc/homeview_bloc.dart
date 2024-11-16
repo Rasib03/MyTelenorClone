@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 // ignore: depend_on_referenced_packages
 import 'package:meta/meta.dart';
-import 'package:my_telenor/screens/home/data/courasol_data.dart';
+import 'package:my_telenor/data/courasol_data.dart';
 
 part 'homeview_event.dart';
 part 'homeview_state.dart';
