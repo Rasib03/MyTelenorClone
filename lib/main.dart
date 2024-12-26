@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:my_telenor/blocs/numberVerification_bloc/bloc/number_verification_bloc.dart';
 import 'package:my_telenor/firebase_options.dart';
 import 'package:my_telenor/blocs/home_bloc/homeview_bloc.dart';
-import 'package:my_telenor/screens/home/home.dart';
+import 'package:my_telenor/screens/dashboard/dashboard.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -31,10 +31,13 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         title: 'Flutter Demo',
+        debugShowCheckedModeBanner: false,
         theme: ThemeData(
           useMaterial3: true,
         ),
-        home: const MyHomePage(),
+        home: const Dashboard(
+          phoneNumber: '03330744944',
+        ),
       ),
     );
   }
