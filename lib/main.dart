@@ -5,6 +5,7 @@ import 'package:my_telenor/blocs/numberVerification_bloc/bloc/number_verificatio
 import 'package:my_telenor/firebase_options.dart';
 import 'package:my_telenor/blocs/home_bloc/homeview_bloc.dart';
 import 'package:my_telenor/screens/dashboard/dashboard.dart';
+import 'package:my_telenor/screens/navbar.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -35,9 +36,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           useMaterial3: true,
         ),
-        home: const Dashboard(
-          phoneNumber: '03330744944',
-        ),
+        home: const BottomNavBar(),
       ),
     );
   }
