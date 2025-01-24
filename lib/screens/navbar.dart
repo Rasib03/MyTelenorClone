@@ -12,6 +12,11 @@ class BottomNavBar extends StatefulWidget {
 }
 
 class _BottomNavbarState extends State<BottomNavBar> {
+  @override
+  void initState() {
+    super.initState();
+  }
+
   int _selectedIndex = 0;
   Widget? selectWidget() {
     switch (_selectedIndex) {

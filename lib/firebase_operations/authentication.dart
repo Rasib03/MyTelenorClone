@@ -1,6 +1,8 @@
 // ignore_for_file: prefer_function_declarations_over_variables, avoid_print
 
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 
 // SEND OTP
 Future<void> sendOTP(
