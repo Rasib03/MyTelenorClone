@@ -6,6 +6,8 @@ plugins {
     id "kotlin-android"
     id "dev.flutter.flutter-gradle-plugin"
 }
+
+ext.kotlin_version = '1.9.0' // Use the latest version or the version required by the library
 apply plugin: 'com.google.gms.google-services'
 
 def localProperties = new Properties()
@@ -68,4 +70,8 @@ flutter {
     source '../..'
 }
 
-dependencies {}
+dependencies {
+    implementation 'com.stripe:stripe-android:20.22.0' // Use the latest Stripe SDK
+    implementation 'com.google.android.material:material:1.9.0'
+}
+

@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:my_telenor/blocs/numberVerification_bloc/bloc/number_verification_bloc.dart';
 import 'package:my_telenor/firebase_operations/firebase_cloud_messaging.dart';
 import 'package:my_telenor/firebase_options.dart';
@@ -13,6 +14,9 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   await FCM().initNotifications();
+  Stripe.publishableKey =
+      "pk_test_51QkpamFhS7fUusM3PqgIfSO2FFqtdxZZJCupJcnbE8lGEF8qxKO59irBzJkWleM916HoJcH8FL3iz21Z7ynHpss900kQJ4l2S8";
+  // await Stripe.instance.applySettings();
   runApp(const MyApp());
 }
 

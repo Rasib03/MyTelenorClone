@@ -3,6 +3,9 @@ import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:my_telenor/screens/account/account.dart';
 import 'package:my_telenor/screens/dashboard/dashboard.dart';
+import 'package:my_telenor/screens/explore/explore.dart';
+import 'package:my_telenor/screens/offers/offers.dart';
+import 'package:my_telenor/screens/history/history.dart';
 
 class BottomNavBar extends StatefulWidget {
   const BottomNavBar({super.key});
@@ -21,15 +24,24 @@ class _BottomNavbarState extends State<BottomNavBar> {
   Widget? selectWidget() {
     switch (_selectedIndex) {
       case 0:
-        return Dashboard(
+        return const Dashboard(
           phoneNumber: '03330744944',
         );
 
       case 1:
-        return Account();
+        return const Account();
+
+      case 2:
+        return const Offers();
+
+      case 3:
+        return const History();
+
+      case 4:
+        return const Explore();
 
       default:
-        return Scaffold(
+        return const Scaffold(
           backgroundColor: Colors.white,
         );
     }
