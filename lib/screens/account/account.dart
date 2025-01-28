@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
+import 'package:my_telenor/data/package.dart';
 
 class Account extends StatefulWidget {
   const Account({super.key});
@@ -10,7 +12,7 @@ class Account extends StatefulWidget {
 
 class _AccountState extends State<Account> {
   bool _selected = false;
-
+  bool subscription = false;
   void _handleSwipe(DragEndDetails details) {
     if (details.primaryVelocity! > 0) {
       // Swipe to the right
@@ -23,6 +25,248 @@ class _AccountState extends State<Account> {
         _selected = true;
       });
     }
+  }
+
+  Widget subs({required BuildContext context}) {
+    final mq = context.size!;
+    return Material(
+      elevation: 2,
+      borderRadius: BorderRadius.circular(10),
+      child: Container(
+        width: mq.width,
+        height: mq.height * .26,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: Stack(
+          children: [
+            Container(
+              width: mq.width * .3,
+              height: mq.height * .02,
+              decoration: BoxDecoration(
+                borderRadius: const BorderRadius.only(
+                  topLeft: Radius.circular(10),
+                  bottomRight: Radius.circular(10),
+                ),
+                color: Colors.blue.shade900,
+              ),
+              child: const Center(
+                child: Text(
+                  'FREE PANDA PRO',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 10,
+                  ),
+                ),
+              ),
+            ),
+            Positioned(
+              top: mq.height * .03,
+              left: mq.width * .05,
+              child: const Text(
+                'Monthly Prime',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 12,
+                ),
+              ),
+            ),
+            Positioned(
+              top: mq.height * .055,
+              left: mq.width * .047,
+              child: const Row(
+                children: [
+                  Icon(
+                    Icons.calendar_month,
+                    color: Colors.yellow,
+                    size: 15,
+                  ),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Text(
+                    'Validity 30 Days',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.w400,
+                      fontSize: 11,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Positioned(
+              top: mq.height * .03,
+              left: mq.width * .46,
+              child: Row(
+                children: [
+                  const Text(
+                    'Rs. 1740 (',
+                    style: TextStyle(
+                      color: Colors.blue,
+                      fontWeight: FontWeight.w500,
+                      fontSize: 14,
+                    ),
+                  ),
+                  Image.asset(
+                    'assets/logo/easypaisaLogo.png',
+                    width: 16,
+                    height: 16,
+                  ),
+                  const Text(
+                    ' Rs. 2000)',
+                    style: TextStyle(
+                      color: Colors.blue,
+                      fontWeight: FontWeight.w500,
+                      fontSize: 14,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Positioned(
+              top: mq.height * .085,
+              left: mq.width * .14,
+              child: const Column(
+                children: [
+                  Text(
+                    '300 GBs',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.w500,
+                      fontSize: 11,
+                    ),
+                  ),
+                  Text(
+                    'Internet',
+                    style: TextStyle(
+                      color: Colors.grey,
+                      fontWeight: FontWeight.w500,
+                      fontSize: 11,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Positioned(
+              top: mq.height * .13,
+              left: mq.width * .09,
+              child: const Column(
+                children: [
+                  Text(
+                    'Unlimited',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.w500,
+                      fontSize: 11,
+                    ),
+                  ),
+                  Text(
+                    'Telenor Minutes+',
+                    style: TextStyle(
+                      color: Colors.grey,
+                      fontWeight: FontWeight.w500,
+                      fontSize: 11,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Positioned(
+              top: mq.height * .085,
+              left: mq.width * .34,
+              child: const Column(
+                children: [
+                  Text(
+                    '50+',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.w500,
+                      fontSize: 11,
+                    ),
+                  ),
+                  Text(
+                    'INTL. Minutes',
+                    style: TextStyle(
+                      color: Colors.grey,
+                      fontWeight: FontWeight.w500,
+                      fontSize: 11,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Positioned(
+              top: mq.height * .13,
+              left: mq.width * .39,
+              child: const Column(
+                children: [
+                  Text(
+                    '20000',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.w500,
+                      fontSize: 11,
+                    ),
+                  ),
+                  Text(
+                    'SMS',
+                    style: TextStyle(
+                      color: Colors.grey,
+                      fontWeight: FontWeight.w500,
+                      fontSize: 11,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Positioned(
+              top: mq.height * .085,
+              left: mq.width * .6,
+              child: const Column(
+                children: [
+                  Text(
+                    '1500',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.w500,
+                      fontSize: 11,
+                    ),
+                  ),
+                  Text(
+                    'Other Net. Mins',
+                    style: TextStyle(
+                      color: Colors.grey,
+                      fontWeight: FontWeight.w500,
+                      fontSize: 11,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Positioned(
+              top: mq.height * .185,
+              left: mq.width * .05,
+              child: Container(
+                width: mq.width * .8,
+                height: 1,
+                color: Colors.grey.shade200,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  @override
+  void initState() {
+    if (Package().internet != 0) {
+      subscription = true;
+    }
+    super.initState();
   }
 
   final _advancedDrawerController = AdvancedDrawerController();
@@ -244,16 +488,268 @@ class _AccountState extends State<Account> {
                   ],
                 ),
               ),
-              Padding(
-                padding: EdgeInsets.only(top: mq.height * .35),
-                child: const Text(
-                  'You do not have any active subscriptions.',
-                  style: TextStyle(
-                    color: Colors.grey,
-                    fontWeight: FontWeight.w500,
-                    fontSize: 16,
-                  ),
-                ),
+              SizedBox(
+                width: mq.width,
+                height: mq.height * .755,
+                child: _selected && subscription
+                    ? Padding(
+                        padding: EdgeInsets.only(
+                            top: mq.height * .02,
+                            left: mq.width * .02,
+                            right: mq.width * .02,
+                            bottom: mq.height * .55),
+                        child: Material(
+                          elevation: 2,
+                          borderRadius: BorderRadius.circular(10),
+                          child: Container(
+                            width: mq.width,
+                            height: mq.height * .26,
+                            decoration: BoxDecoration(
+                              color: Colors.white38,
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: Stack(
+                              children: [
+                                Container(
+                                  width: mq.width * .3,
+                                  height: mq.height * .02,
+                                  decoration: BoxDecoration(
+                                    borderRadius: const BorderRadius.only(
+                                      topLeft: Radius.circular(10),
+                                      bottomRight: Radius.circular(10),
+                                    ),
+                                    color: Colors.blue.shade900,
+                                  ),
+                                  child: const Center(
+                                    child: Text(
+                                      'FREE PANDA PRO',
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 10,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Positioned(
+                                  top: mq.height * .03,
+                                  left: mq.width * .05,
+                                  child: const Text(
+                                    'Monthly Prime',
+                                    style: TextStyle(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 12,
+                                    ),
+                                  ),
+                                ),
+                                Positioned(
+                                  top: mq.height * .055,
+                                  left: mq.width * .047,
+                                  child: const Row(
+                                    children: [
+                                      Icon(
+                                        Icons.calendar_month,
+                                        color: Colors.yellow,
+                                        size: 15,
+                                      ),
+                                      SizedBox(
+                                        width: 10,
+                                      ),
+                                      Text(
+                                        'Validity 30 Days',
+                                        style: TextStyle(
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.w400,
+                                          fontSize: 11,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Positioned(
+                                  top: mq.height * .03,
+                                  left: mq.width * .46,
+                                  child: Row(
+                                    children: [
+                                      const Text(
+                                        'Rs. 1740 (',
+                                        style: TextStyle(
+                                          color: Colors.blue,
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 14,
+                                        ),
+                                      ),
+                                      Image.asset(
+                                        'assets/logo/easypaisaLogo.png',
+                                        width: 16,
+                                        height: 16,
+                                      ),
+                                      const Text(
+                                        ' Rs. 2000)',
+                                        style: TextStyle(
+                                          color: Colors.blue,
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 14,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Positioned(
+                                  top: mq.height * .085,
+                                  left: mq.width * .14,
+                                  child: const Column(
+                                    children: [
+                                      Text(
+                                        '300 GBs',
+                                        style: TextStyle(
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 11,
+                                        ),
+                                      ),
+                                      Text(
+                                        'Internet',
+                                        style: TextStyle(
+                                          color: Colors.grey,
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 11,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Positioned(
+                                  top: mq.height * .13,
+                                  left: mq.width * .09,
+                                  child: const Column(
+                                    children: [
+                                      Text(
+                                        'Unlimited',
+                                        style: TextStyle(
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 11,
+                                        ),
+                                      ),
+                                      Text(
+                                        'Telenor Minutes+',
+                                        style: TextStyle(
+                                          color: Colors.grey,
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 11,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Positioned(
+                                  top: mq.height * .085,
+                                  left: mq.width * .34,
+                                  child: const Column(
+                                    children: [
+                                      Text(
+                                        '50+',
+                                        style: TextStyle(
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 11,
+                                        ),
+                                      ),
+                                      Text(
+                                        'INTL. Minutes',
+                                        style: TextStyle(
+                                          color: Colors.grey,
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 11,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Positioned(
+                                  top: mq.height * .13,
+                                  left: mq.width * .39,
+                                  child: const Column(
+                                    children: [
+                                      Text(
+                                        '20000',
+                                        style: TextStyle(
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 11,
+                                        ),
+                                      ),
+                                      Text(
+                                        'SMS',
+                                        style: TextStyle(
+                                          color: Colors.grey,
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 11,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Positioned(
+                                  top: mq.height * .085,
+                                  left: mq.width * .6,
+                                  child: const Column(
+                                    children: [
+                                      Text(
+                                        '1500',
+                                        style: TextStyle(
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 11,
+                                        ),
+                                      ),
+                                      Text(
+                                        'Other Net. Mins',
+                                        style: TextStyle(
+                                          color: Colors.grey,
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 11,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Positioned(
+                                  top: mq.height * .185,
+                                  left: mq.width * .05,
+                                  child: Container(
+                                    width: mq.width * .8,
+                                    height: 1,
+                                    color: Colors.grey.shade200,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      )
+                    : !_selected && subscription
+                        ? const Center(
+                            child: Text(
+                              'You did not have used any active subscriptions.',
+                              style: TextStyle(
+                                color: Colors.grey,
+                                fontWeight: FontWeight.w500,
+                                fontSize: 16,
+                              ),
+                            ),
+                          )
+                        : const Center(
+                            child: Text(
+                              'You do not have any active subscriptions.',
+                              style: TextStyle(
+                                color: Colors.grey,
+                                fontWeight: FontWeight.w500,
+                                fontSize: 16,
+                              ),
+                            ),
+                          ),
               )
             ],
           ),

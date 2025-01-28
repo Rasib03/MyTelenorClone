@@ -16,7 +16,7 @@ def create_payment_intent():
         # Create a PaymentIntent
         payment_intent = stripe.PaymentIntent.create(
             amount=amount,
-            currency='usd',
+            currency='pkr',
         )
 
         # Return the client secret

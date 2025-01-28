@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:material_symbols_icons/symbols.dart';
+import 'package:my_telenor/data/package.dart';
 import 'package:my_telenor/payment_method/payments.dart';
 
 class Dashboard extends StatefulWidget {
@@ -19,6 +20,15 @@ class Dashboard extends StatefulWidget {
 class _DashboardState extends State<Dashboard> {
   bool select = false;
   final _advancedDrawerController = AdvancedDrawerController();
+
+  void _handlePayment() async {
+    await Payments().makePayment(
+      2000,
+      () => setState(() {
+        Package().payment = true;
+      }),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -466,9 +476,9 @@ class _DashboardState extends State<Dashboard> {
                                             )
                                           ],
                                         ),
-                                        const Text(
-                                          '0',
-                                          style: TextStyle(
+                                        Text(
+                                          Package().internet.toString(),
+                                          style: const TextStyle(
                                             color: Colors.black,
                                             fontSize: 15,
                                             fontWeight: FontWeight.w400,
@@ -489,7 +499,9 @@ class _DashboardState extends State<Dashboard> {
                                           width: mq.width * .15,
                                           height: 3,
                                           decoration: BoxDecoration(
-                                            color: Colors.red.shade100,
+                                            color: Package().payment
+                                                ? Colors.red.shade400
+                                                : Colors.red.shade100,
                                             borderRadius:
                                                 BorderRadius.circular(20),
                                           ),
@@ -520,9 +532,9 @@ class _DashboardState extends State<Dashboard> {
                                             )
                                           ],
                                         ),
-                                        const Text(
-                                          '0',
-                                          style: TextStyle(
+                                        Text(
+                                          Package().onnetmins.toString(),
+                                          style: const TextStyle(
                                             color: Colors.black,
                                             fontSize: 15,
                                             fontWeight: FontWeight.w400,
@@ -543,7 +555,9 @@ class _DashboardState extends State<Dashboard> {
                                           width: mq.width * .15,
                                           height: 3,
                                           decoration: BoxDecoration(
-                                            color: Colors.orange.shade100,
+                                            color: Package().payment
+                                                ? Colors.orange.shade400
+                                                : Colors.orange.shade100,
                                             borderRadius:
                                                 BorderRadius.circular(20),
                                           ),
@@ -574,9 +588,9 @@ class _DashboardState extends State<Dashboard> {
                                             )
                                           ],
                                         ),
-                                        const Text(
-                                          '0',
-                                          style: TextStyle(
+                                        Text(
+                                          Package().offnetmins.toString(),
+                                          style: const TextStyle(
                                             color: Colors.black,
                                             fontSize: 15,
                                             fontWeight: FontWeight.w400,
@@ -597,7 +611,9 @@ class _DashboardState extends State<Dashboard> {
                                           width: mq.width * .15,
                                           height: 3,
                                           decoration: BoxDecoration(
-                                            color: Colors.purple.shade100,
+                                            color: Package().payment
+                                                ? Colors.purple.shade400
+                                                : Colors.purple.shade100,
                                             borderRadius:
                                                 BorderRadius.circular(20),
                                           ),
@@ -1218,9 +1234,7 @@ class _DashboardState extends State<Dashboard> {
                                   ),
                                   GestureDetector(
                                     onTap: () {
-                                      print("object");
-                                      Payments().makePayment();
-                                      print('after making payment');
+                                      _handlePayment();
                                     },
                                     child: Container(
                                       width: mq.width * .2,
