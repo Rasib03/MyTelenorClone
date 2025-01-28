@@ -15,10 +15,7 @@ Future<void> sendOTP(
   };
 
   final PhoneVerificationFailed verificationFailed =
-      (FirebaseAuthException exception) {
-    print("Verification failed: ${exception.message}");
-    // You can show a snackbar or dialog for the error here
-  };
+      (FirebaseAuthException exception) {};
 
   final PhoneCodeSent codeSent = (String verificationId, int? resendToken) {
     // This is called when OTP is sent successfully
@@ -37,7 +34,7 @@ Future<void> sendOTP(
 
 //  VERIFY OTP
 Future<void> verifyOTP(String verificationId, String smsCode) async {
-  final FirebaseAuth _auth = FirebaseAuth.instance;
+  final FirebaseAuth auth = FirebaseAuth.instance;
 
   try {
     // Create a credential using the verificationId and smsCode
@@ -47,13 +44,9 @@ Future<void> verifyOTP(String verificationId, String smsCode) async {
     );
 
     // Sign in with the credential
-    await _auth.signInWithCredential(credential);
-
-    print("Successfully signed in!");
-    // You can navigate the user to the home screen or another page here
+    await auth.signInWithCredential(credential);
   } catch (e) {
-    print("Failed to verify OTP: $e");
-    // Handle error (e.g., invalid OTP) by showing a message to the user
+    throw (e.toString());
   }
 }
 

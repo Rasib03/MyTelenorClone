@@ -19,3 +19,7 @@ class VerifyOTP extends NumberVerificationEvent {
 
   VerifyOTP({required this.smsCode, required this.varificationId});
 }
+
+class Logout extends NumberVerificationEvent {
+  Logout();
+}

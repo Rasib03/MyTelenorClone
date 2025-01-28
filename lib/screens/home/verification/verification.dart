@@ -3,7 +3,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:my_telenor/blocs/numberVerification_bloc/bloc/number_verification_bloc.dart';
 import 'package:my_telenor/constants/colors.dart';
-import 'package:my_telenor/screens/dashboard/dashboard.dart';
+
+import 'package:my_telenor/screens/navbar.dart';
 
 class Verification extends StatefulWidget {
   final String number;
@@ -44,8 +45,8 @@ class _VerificationState extends State<Verification> {
           if (state is VerifyOTPSuccess) {
             Navigator.of(context).push(
               MaterialPageRoute(
-                builder: (context) => Dashboard(
-                  phoneNumber: widget.number,
+                builder: (context) => BottomNavBar(
+                  number: widget.number,
                 ),
               ),
             );

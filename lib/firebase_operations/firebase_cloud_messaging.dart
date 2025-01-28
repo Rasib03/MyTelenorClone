@@ -1,9 +1,12 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter/foundation.dart';
 
 Future<void> handleBackgroundMessage(RemoteMessage msg) async {
-  print('title -> ${msg.notification?.title}');
-  print('body -> ${msg.notification?.body}');
-  print('payload -> ${msg.data}');
+  if (kDebugMode) {
+    print('title -> ${msg.notification?.title}');
+    print('body -> ${msg.notification?.body}');
+    print('payload -> ${msg.data}');
+  }
 }
 
 class FCM {

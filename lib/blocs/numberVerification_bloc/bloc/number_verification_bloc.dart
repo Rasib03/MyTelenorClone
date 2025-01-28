@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:meta/meta.dart';
 import 'package:my_telenor/firebase_operations/authentication.dart';
 
@@ -39,6 +40,13 @@ class NumberVerificationBloc
         emit(
             VerifyOTPFailure(errorMessage: e.toString())); // Emit failure state
       }
+    });
+
+    // Handle loging out.
+    on<Logout>((event, emit) async {
+      final FirebaseAuth instance = FirebaseAuth.instance;
+      await instance.signOut();
+      emit(LoggedOut());
     });
   }
 }

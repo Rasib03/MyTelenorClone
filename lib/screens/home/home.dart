@@ -44,7 +44,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               BlocBuilder<HomeviewBloc, HomeviewState>(
                 builder: (context, state) {
-                  final dataa;
+                  late final dataa;
                   int index = 0;
                   if (state is ChangeTriggered) {
                     context

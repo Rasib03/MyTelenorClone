@@ -8,7 +8,8 @@ import 'package:my_telenor/screens/offers/offers.dart';
 import 'package:my_telenor/screens/history/history.dart';
 
 class BottomNavBar extends StatefulWidget {
-  const BottomNavBar({super.key});
+  final String number;
+  const BottomNavBar({super.key, required this.number});
 
   @override
   State<BottomNavBar> createState() => _BottomNavbarState();
@@ -24,8 +25,8 @@ class _BottomNavbarState extends State<BottomNavBar> {
   Widget? selectWidget() {
     switch (_selectedIndex) {
       case 0:
-        return const Dashboard(
-          phoneNumber: '03330744944',
+        return Dashboard(
+          phoneNumber: widget.number,
         );
 
       case 1:

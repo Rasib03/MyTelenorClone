@@ -28,3 +28,5 @@ class VerifyOTPFailure extends NumberVerificationState {
 
   VerifyOTPFailure({required String errorMessage});
 }
+
+class LoggedOut extends NumberVerificationState {}
