@@ -10,7 +10,7 @@ class Payments {
       final response = await http.post(
         // must replace the end-point with the end-point that you will get from ngrok.
         Uri.parse(
-            'https://9227-39-41-140-215.ngrok-free.app/create-payment-intent'), // Use your ngrok URL
+            'https://4e1c-39-41-160-159.ngrok-free.app/create-payment-intent'), // Use your ngrok URL
         headers: {'Content-Type': 'application/json'},
         body: jsonEncode(
             {'amount': amount * 100}), // Amount in cents (e.g., $10.00)

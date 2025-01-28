@@ -9,15 +9,17 @@ import 'package:my_telenor/firebase_options.dart';
 import 'package:my_telenor/blocs/home_bloc/homeview_bloc.dart';
 import 'package:my_telenor/screens/home/home.dart';
 import 'package:my_telenor/screens/navbar.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+
   await FCM().initNotifications();
-  Stripe.publishableKey =
-      "pk_test_51QkpamFhS7fUusM3PqgIfSO2FFqtdxZZJCupJcnbE8lGEF8qxKO59irBzJkWleM916HoJcH8FL3iz21Z7ynHpss900kQJ4l2S8";
+  await dotenv.load();
+  Stripe.publishableKey = dotenv.env['STRIPE_PUBLISHABLE_KEY']!;
   // await Stripe.instance.applySettings();
   runApp(const MyApp());
 }
