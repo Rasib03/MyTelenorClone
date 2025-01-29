@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
 
@@ -17,5 +18,13 @@ class FCM {
     final fcmToken = await _fcm.getToken();
     print('FCM Token -> $fcmToken');
     FirebaseMessaging.onBackgroundMessage(handleBackgroundMessage);
+    await uploadFCM(fcmToken!);
+  }
+
+  Future<void> uploadFCM(String fcm) async {
+    final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+    await _firestore.collection('1').doc().set(
+      {'fcm_token': fcm},
+    );
   }
 }

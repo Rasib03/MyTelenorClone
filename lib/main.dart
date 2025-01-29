@@ -20,6 +20,7 @@ void main() async {
   await FCM().initNotifications();
   await dotenv.load();
   Stripe.publishableKey = dotenv.env['STRIPE_PUBLISHABLE_KEY']!;
+
   // await Stripe.instance.applySettings();
   runApp(const MyApp());
 }

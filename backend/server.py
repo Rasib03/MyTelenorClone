@@ -11,7 +11,8 @@ load_dotenv(dotenv_path=env_path)
 app = Flask(__name__)
 
 # Set your Stripe secret key
-stripe.api_key = os.getenv("STRIPE_SECRET_KEY") 
+stripe.api_key = os.getenv("STRIPE_SECRET_KEY")
+
 
 @app.route('/create-payment-intent', methods=['POST'])
 def create_payment_intent():
@@ -36,16 +37,3 @@ def create_payment_intent():
 
 if __name__ == '__main__':
     app.run(port=3000)  # Run the server on port 3000
-
-
-
-
-# curl -X POST http://localhost:3000/create-payment-intent \
-#      -H "Content-Type: application/json" \
-#      -d '{"amount": 1000}'
-
-# {
-#     "clientSecret": "pi_1JH4Y2F2eZvKYlo2C3q2X6bG_secret_xyz"
-# }
-#ngrok authtoken YOUR_AUTH_TOKEN
-#ngrok http 3000
